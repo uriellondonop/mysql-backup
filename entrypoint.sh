@@ -56,3 +56,6 @@ echo "☁️ Subiendo a R2: $REMOTE_PATH"
 rclone copy "$LOCAL_BACKUP_DIR" "remote:$REMOTE_PATH"
 
 echo "🏁 Backup finalizado correctamente"
+
+# eliminar backups con más de 14 días
+rclone delete "remote:$R2_BUCKET/$R2_PATH" --min-age 14d || true
